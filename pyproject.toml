@@ -15,6 +15,8 @@ faiss-cpu = "^1.8.0.post1"
 scikit-learn = "^1.5.1"
 scipy = "^1.14.0"
 ipykernel = "^6.29.5"
+nltk = "^3.8.2"
+wordcloud = "^1.9.3"
 
 
 [build-system]
