@@ -15,13 +15,13 @@ faiss-cpu = "^1.8.0.post1"
 scikit-learn = "^1.5.1"
 scipy = "^1.14.0"
 ipykernel = "^6.29.5"
-nltk = "^3.8.2"
 wordcloud = "^1.9.3"
 torch = "2.2.2"
 tensorflow-io-gcs-filesystem = "0.31.0"
 tensorflow = "2.15.0"
 torchvision = "0.17.2"
 sentence-transformers = "^3.0.1"
+nltk = "3.7"
 
 
 
