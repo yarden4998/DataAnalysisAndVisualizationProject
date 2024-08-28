@@ -1,7 +1,7 @@
 import faiss
 import numpy as np
 import pandas as pd
-import
+import pickle
 from sentence_transformers import SentenceTransformer
 from preprocess_data import preprocess_data
 
