@@ -29,7 +29,7 @@ def preprocess_description(description: str) -> str:
     return ' '.join(words)
 
 
-def preprocess_data(data_path: str = '../data/IMDb movies.csv') -> pd.DataFrame:
+def preprocess_data(data_path: str = '/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/IMDb movies.csv') -> pd.DataFrame:
     # Loads the csv file into a DataFrame
     imdb_movies_data = pd.read_csv(data_path)
 
