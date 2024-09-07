@@ -11,7 +11,6 @@ numpy = "1.26.4"
 pandas = "^2.2.2"
 matplotlib = "^3.9.1.post1"
 seaborn = "^0.13.2"
-faiss-cpu = "^1.8.0.post1"
 scikit-learn = "^1.5.1"
 scipy = "^1.14.0"
 ipykernel = "^6.29.5"
@@ -23,6 +22,7 @@ torchvision = "0.17.2"
 sentence-transformers = "^3.0.1"
 nltk = "3.7"
 annoy = "^1.17.3"
+faiss-gpu = "^1.7.2"
 
 
 
