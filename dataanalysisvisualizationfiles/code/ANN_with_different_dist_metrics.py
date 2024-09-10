@@ -24,7 +24,7 @@ class ANN:
             raise ValueError("Unsupported metric. Choose from 'L2', 'InnerProduct', or 'Cosine'.")
         res = faiss.StandardGpuResources() 
         self.index = faiss.index_cpu_to_gpu(res, 0, self.index)
-        # self.index = faiss.index_cpu_to_gpu(faiss.StandardGpuResources(), 0, self.index)
+        
 
         
     def add_embeddings(self, embeddings):
@@ -74,6 +74,7 @@ class ANNOY:
             distance_matrix[i, :len(I[1])] = I[1]
         
         return np.triu(distance_matrix), np.triu(index_matrix)
+
 # Load the dataset
 df = preprocess_data()
 #df = df.head(10)
@@ -101,12 +102,58 @@ _, exact_indices = exact_ann.compute_distance_matrix(sentence_embeddings)
 
 for metric in metrics:
     print(f"Computing distance matrix for {metric} similarity...")
-    
+
     if metric == 'Annoy':
         ann = ANNOY(dimension=sentence_embeddings.shape[1], metric='angular')
     else:
         ann = ANN(dimension=sentence_embeddings.shape[1], metric=metric)
-    
+
     ann.add_embeddings(sentence_embeddings)
     start_time = time()
-    distance_matrix, index_matrix = ann.compute_dist
+    distance_matrix, index_matrix = ann.compute_distance_matrix(sentence_embeddings)
+    elapsed_time = time() - start_time
+    runtime_results[metric] = elapsed_time
+    recall_results[metric] = []
+
+    for k in k_values:
+        recall_at_k = np.mean([
+            len(set(index_matrix[i, :k]) & set(exact_indices[i, :k])) / k
+            for i in range(len(sentences))
+        ])
+        recall_results[metric].append(recall_at_k)
+
+    print(f"Done! Time taken: {elapsed_time:.4f} seconds for {metric}.\n")
+
+    with open(f'distance_matrix_{metric}.pkl', 'wb') as f:
+        pickle.dump(distance_matrix, f)
+    with open(f'index_matrix_{metric}.pkl', 'wb') as f:
+        pickle.dump(index_matrix, f)
+
+    print(f"Saved {metric} similarity distance matrix and index matrix to pkl files.\n")
+
+plt.figure(figsize=(12, 6))
+
+# Plot Recall@k
+plt.subplot(1, 2, 1)
+for metric in metrics:
+    plt.plot(k_values, recall_results[metric], label=metric)
+plt.title('Recall@k for Different Metrics')
+plt.xlabel('k')
+plt.ylabel('Recall@k')
+plt.legend()
+plt.grid(True)
+
+# Plot Runtime
+plt.subplot(1, 2, 2)
+plt.bar(runtime_results.keys(), runtime_results.values())
+plt.title('Runtime for Different Metrics')
+plt.xlabel('Metric')
+plt.ylabel('Time (seconds)')
+plt.grid(True)
+
+# Save the plots
+plt.tight_layout()
+plt.savefig('ann_recall_runtime.png')
+plt.show()
+
+print("Graphs saved as 'ann_recall_runtime.png'.")
