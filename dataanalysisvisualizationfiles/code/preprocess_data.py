@@ -50,10 +50,4 @@ def preprocess_data(data_path: str = '/home/student/idan/DataAnalysisAndVisualiz
 
     return imdb_movies_data
 
-# Load the data
-imdb_movies_data = preprocess_data()
-print(imdb_movies_data.head())
-print(imdb_movies_data.shape)
-print(imdb_movies_data.columns)
-
 
