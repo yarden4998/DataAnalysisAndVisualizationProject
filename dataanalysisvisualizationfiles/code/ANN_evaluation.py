@@ -53,13 +53,18 @@ def main():
 
     f_l2 = ANN(dimension=vectors.shape[1], metric='L2', use_gpu=True)
     f_cos = ANN(dimension=vectors.shape[1], metric='Cosine', use_gpu=True)
-    #f_ip = ANN(dimension=vectors.shape[1], metric='InnerProduct', use_gpu=True)
-    f_cos_nogpu = ANN(dimension=vectors.shape[1], metric='Cosine', use_gpu=False, num_threads=10)
+    f_ip = ANN(dimension=vectors.shape[1], metric='InnerProduct', use_gpu=True)
+    f_cos_nogpu_multi = ANN(dimension=vectors.shape[1], metric='Cosine', use_gpu=False, num_threads=12)
+    f_cos_nogpu = ANN(dimension=vectors.shape[1], metric='Cosine', use_gpu=False)
+    f_lsh = ANN(dimension=vectors.shape[1], metric='LSH', use_gpu=True)
+    f_hnsw = ANN(dimension=vectors.shape[1], metric='HNSW', use_gpu=True)
+    f_ivf_l2 = ANN(dimension=vectors.shape[1], metric='IVF_l2', use_gpu=False, num_threads=12)
+    f_ivf_cosine = ANN(dimension=vectors.shape[1], metric='IVF_ip', use_gpu=False, num_threads=12)
     an_cos = ANNOY(dimension=vectors.shape[1], metric='angular', n_trees=10)
     an_l2 = ANNOY(dimension=vectors.shape[1], metric='euclidean', n_trees=10)
     an_ip = ANNOY(dimension=vectors.shape[1], metric='dot', n_trees=10)
     an_cos_100 = ANNOY(dimension=vectors.shape[1], metric='angular', n_trees=100)
-    indices = {'faiss_l2': f_l2, 'faiss_cosine':f_cos, 'faiss_cosine_no_gpu': f_cos_nogpu, 'annoy_cosine':an_cos, 'annoy_l2':an_l2, 'annoy_dot_product':an_ip, 'annoy_cosine_100_trees':an_cos_100}
+    indices = {'faiss_l2': f_l2, 'faiss_inner_product': f_ip, 'faiss_cosine':f_cos, 'faiss_cosine_no_gpu_multi': f_cos_nogpu_multi, 'faiss_cosine_no_gpu_no_multi':f_cos_nogpu, 'faiss_lsh':f_lsh, 'faiss_HNSW':f_hnsw, 'faiss_IVF_L2':f_ivf_l2, 'faiss_IVF_Cosine':f_ivf_cosine, 'annoy_cosine':an_cos, 'annoy_l2':an_l2, 'annoy_dot_product':an_ip, 'annoy_cosine_100_trees':an_cos_100}
 
     times, recalls = {}, {}
     for name, index in indices.items():

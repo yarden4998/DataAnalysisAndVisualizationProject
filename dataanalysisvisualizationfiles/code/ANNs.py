@@ -5,15 +5,23 @@ import numpy as np
 class ANN:
     def __init__(self, dimension, metric='L2', use_gpu=False, num_threads=2):
         self.dimension = dimension
-        
+        self.metric = metric
         if metric == 'L2':
             self.index = faiss.IndexFlatL2(dimension)
         elif metric == 'InnerProduct':
             self.index = faiss.IndexFlatIP(dimension)
         elif metric == 'Cosine':
             self.index = faiss.IndexFlatIP(dimension)
+        elif metric == 'LSH':
+            self.index = faiss.IndexLSH(dimension, 8*dimension)
+        elif metric == 'HNSW':
+            self.index = faiss.IndexHNSWFlat(dimension, 32)
+        elif metric == 'IVF_l2':    
+            self.index = faiss.IndexIVFFlat(faiss.IndexFlatL2(dimension), dimension, 100, faiss.METRIC_L2)
+        elif metric == 'IVF_ip':    
+            self.index = faiss.IndexIVFFlat(faiss.IndexFlatIP(dimension), dimension, 100, faiss.METRIC_INNER_PRODUCT)
         else:
-            raise ValueError("Unsupported metric. Choose from 'L2', 'InnerProduct', or 'Cosine'.")
+            raise ValueError("Unsupported metric. Supported metrics are: L2, InnerProduct, Cosine, LSH, HNSW, IVF_l2, IVF_ip")
         
         if use_gpu:
             res = faiss.StandardGpuResources() 
@@ -22,12 +30,14 @@ class ANN:
             faiss.omp_set_num_threads(num_threads)
 
     def add_embeddings(self, embeddings):
-        if hasattr(self, 'metric') and self.metric == 'Cosine':
+        if self.metric == 'Cosine' or self.metric == 'IVF_ip':
             embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
+        if self.metric == 'IVF_l2' or self.metric == 'IVF_ip':
+            self.index.train(embeddings)
         self.index.add(embeddings)
     
     def compute_distance_matrix(self, embeddings):
-        if hasattr(self, 'metric') and self.metric == 'Cosine':
+        if self.metric == 'Cosine' or self.metric == 'IVF_ip':
             embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
 
         n = embeddings.shape[0]
@@ -41,7 +51,7 @@ class ANN:
         return np.triu(distance_matrix), np.triu(index_matrix)
     
     def search(self, query, k):
-        if hasattr(self, 'metric') and self.metric == 'Cosine':
+        if self.metric == 'Cosine' or self.metric == 'IVF_ip':
             query = query / np.linalg.norm(query)
         D, I = self.index.search(query, k)
         return D, I
