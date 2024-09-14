@@ -43,7 +43,7 @@ def get_encoded_data(model_name: str) -> tuple[list, list]:
     return X, y, label_encoder
 
 
-def find_distant_points(distance_method, D_pool):
+def find_distant_points(distance_method, D_pool, sample_size):
     if distance_method == 'min':
         # Compute the mean distance to the current training set for all remaining points
         distances = D_pool.min(axis=1)
@@ -60,12 +60,41 @@ def find_distant_points(distance_method, D_pool):
     return furthest_indices_within_remaining
 
 
-def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, distance_method = 'avg'):    
+def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, distance_method='avg', use_faiss_clustering=False, ensure_genre_coverage=False):
     # Split the data into train and test sets
     X_train_full, X_test, y_train_full, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Start by selecting the furthest points from each other for initial training
-    pool_indices = np.random.choice(len(X_train_full), initial_train_size, replace=False)
+    pool_indices = []
+
+    if ensure_genre_coverage:
+        # Ensure at least one example from each genre
+        unique_genres = np.unique(y_train_full)
+        for genre in unique_genres:
+            genre_indices = np.where(y_train_full == genre)[0]
+            selected_index = np.random.choice(genre_indices)
+            pool_indices.append(selected_index)
+
+    if use_faiss_clustering:
+        # Cluster the remaining data using FAISS
+        remaining_indices = list(set(range(len(X_train_full))) - set(pool_indices))
+        remaining_data = X_train_full[remaining_indices]
+
+        n_clusters = initial_train_size - len(pool_indices)  # Number of clusters equal to remaining initial training size
+        kmeans = faiss.Kmeans(d=remaining_data.shape[1], k=n_clusters, niter=20, verbose=True)
+        kmeans.train(remaining_data)
+        cluster_labels = kmeans.index.search(remaining_data, 1)[1].flatten()
+
+        # Select initial samples from each cluster
+        for cluster in range(n_clusters):
+            cluster_indices = np.where(cluster_labels == cluster)[0]
+            selected_index = remaining_indices[np.random.choice(cluster_indices)]
+            pool_indices.append(selected_index)
+    else:
+        # Random initialization for the remaining samples
+        remaining_indices = list(set(range(len(X_train_full))) - set(pool_indices))
+        additional_indices = np.random.choice(remaining_indices, initial_train_size - len(pool_indices), replace=False)
+        pool_indices.extend(additional_indices)
+
     X_train = X_train_full[pool_indices]
     y_train = y_train_full[pool_indices]
 
@@ -94,7 +123,7 @@ def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder
         # Search for the most distant points from the current training set
         D_pool, _ = index.search(X_train_full[remaining_indices], len(X_train))
         
-        furthest_indices_within_remaining = find_distant_points(distance_method, D_pool)
+        furthest_indices_within_remaining = find_distant_points(distance_method, D_pool, sample_size)
 
         # Map the selected indices back to the original dataset indices
         selected_indices = [remaining_indices[i] for i in furthest_indices_within_remaining]
@@ -107,7 +136,6 @@ def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder
         remaining_indices = list(set(remaining_indices) - set(selected_indices))
         
         index.add(X_train_full[selected_indices])
-
 
     # Final evaluation on the test set
     y_pred_final = clf.predict(X_test)
@@ -130,5 +158,8 @@ initial_train_size = 50  # Initial training set size
 iterations = 20  # Number of iterations for active learning
 sample_size = 1000  # Samples to add per iteration
 
-run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, 'avg')
+# Set use_faiss_clustering and ensure_genre_coverage based on your requirement
+use_faiss_clustering = False
+ensure_genre_coverage = False
 
+run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, 'avg', use_faiss_clustering, ensure_genre_coverage)
