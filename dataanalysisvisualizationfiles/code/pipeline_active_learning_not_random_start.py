@@ -60,7 +60,7 @@ def find_distant_points(distance_method, D_pool, sample_size):
     return furthest_indices_within_remaining
 
 
-def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, distance_method='avg', use_faiss_clustering=False, ensure_genre_coverage=False):
+def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, distance_method='avg', use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=True):
     # Split the data into train and test sets
     X_train_full, X_test, y_train_full, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -120,10 +120,13 @@ def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder
         if len(remaining_indices) == 0 or len(remaining_indices) < sample_size or len(X_train) >= len(X_train_full):
             break
 
-        # Search for the most distant points from the current training set
-        D_pool, _ = index.search(X_train_full[remaining_indices], len(X_train))
-        
-        furthest_indices_within_remaining = find_distant_points(distance_method, D_pool, sample_size)
+        if use_ann_selection:
+            # Search for the most distant points from the current training set
+            D_pool, _ = index.search(X_train_full[remaining_indices], len(X_train))
+            furthest_indices_within_remaining = find_distant_points(distance_method, D_pool, sample_size)
+        else:
+            # Random selection of points
+            furthest_indices_within_remaining = np.random.choice(len(remaining_indices), sample_size, replace=False)
 
         # Map the selected indices back to the original dataset indices
         selected_indices = [remaining_indices[i] for i in furthest_indices_within_remaining]
@@ -146,7 +149,7 @@ def run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder
     print(classification_report(y_test, y_pred_final, target_names=label_encoder.classes_))
 
 
-MODEL_NAME = 'bert-base-nli-mean-tokens'
+MODEL_NAME = 'sentence-transformers/all-mpnet-base-v2'
 # Initialize classifier for single-label classification
 # clf = RandomForestClassifier()
 clf = SGDClassifier()
@@ -158,8 +161,9 @@ initial_train_size = 50  # Initial training set size
 iterations = 20  # Number of iterations for active learning
 sample_size = 1000  # Samples to add per iteration
 
-# Set use_faiss_clustering and ensure_genre_coverage based on your requirement
+# Set use_faiss_clustering, ensure_genre_coverage, and use_ann_selection based on your requirement
 use_faiss_clustering = False
 ensure_genre_coverage = False
+use_ann_selection = False
 
-run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, 'avg', use_faiss_clustering, ensure_genre_coverage)
+run_pipeline(clf, iterations, sample_size, initial_train_size, label_encoder, X, y, 'avg', use_faiss_clustering, ensure_genre_coverage, use_ann_selection)
