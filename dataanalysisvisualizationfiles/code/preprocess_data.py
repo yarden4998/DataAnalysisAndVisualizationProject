@@ -57,10 +57,10 @@ def preprocess_data(dataset_name: str = 'imdb') -> pd.DataFrame:
         dataset['genre'] = dataset[target_name].apply(preprocess_list_target)
 
     # Preprocess the text column
-    dataset['description_processed'] = dataset['description'].apply(preprocess_text)
+    dataset['description_processed'] = dataset[text_name].apply(preprocess_text)
 
     # keep only the columns we need
-    dataset = dataset[['index', 'description_processed', 'genre']]
+    dataset = dataset[['description_processed', 'genre']]
 
     return dataset
 
