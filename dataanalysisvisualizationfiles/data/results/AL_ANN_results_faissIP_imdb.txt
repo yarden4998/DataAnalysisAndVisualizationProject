@@ -1,0 +1,240 @@
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.6383
+              precision    recall  f1-score   support
+
+      Action       0.59      0.31      0.40       134
+   Adventure       0.67      0.13      0.21        47
+   Animation       0.00      0.00      0.00        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.65      0.52      0.58      1371
+       Crime       0.00      0.00      0.00        35
+       Drama       0.64      0.88      0.74      2233
+      Family       0.00      0.00      0.00        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.66      0.66      0.66       406
+       Music       0.00      0.00      0.00         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.00      0.00      0.00        23
+     Romance       0.00      0.00      0.00        80
+      Sci-Fi       0.83      0.09      0.16        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.20      0.04      0.07       225
+         War       0.00      0.00      0.00         8
+     Western       0.71      0.74      0.73       128
+
+    accuracy                           0.64      4871
+   macro avg       0.25      0.17      0.18      4871
+weighted avg       0.59      0.64      0.59      4871
+
+
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.6409
+              precision    recall  f1-score   support
+
+      Action       0.42      0.43      0.43       134
+   Adventure       0.56      0.19      0.29        47
+   Animation       0.00      0.00      0.00        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.61      0.62      0.61      1371
+       Crime       0.03      0.03      0.03        35
+       Drama       0.68      0.80      0.73      2233
+      Family       0.57      0.08      0.13        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.66      0.66      0.66       406
+       Music       0.50      0.40      0.44         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.00      0.00      0.00        23
+     Romance       0.00      0.00      0.00        80
+      Sci-Fi       0.81      0.47      0.60        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.22      0.04      0.07       225
+         War       1.00      0.12      0.22         8
+     Western       0.77      0.76      0.76       128
+
+    accuracy                           0.64      4871
+   macro avg       0.34      0.23      0.25      4871
+weighted avg       0.60      0.64      0.61      4871
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.6348
+              precision    recall  f1-score   support
+
+      Action       0.40      0.44      0.42       134
+   Adventure       0.57      0.09      0.15        47
+   Animation       0.50      0.05      0.10        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.60      0.60      0.60      1371
+       Crime       0.00      0.00      0.00        35
+       Drama       0.67      0.81      0.73      2233
+      Family       0.00      0.00      0.00        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.61      0.71      0.66       406
+       Music       0.00      0.00      0.00         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.00      0.00      0.00        23
+     Romance       0.00      0.00      0.00        80
+      Sci-Fi       0.43      0.05      0.10        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.33      0.02      0.03       225
+         War       0.00      0.00      0.00         8
+     Western       0.67      0.79      0.73       128
+
+    accuracy                           0.63      4871
+   macro avg       0.24      0.18      0.18      4871
+weighted avg       0.58      0.63      0.60      4871
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.6399
+              precision    recall  f1-score   support
+
+      Action       0.59      0.35      0.44       134
+   Adventure       0.43      0.19      0.26        47
+   Animation       0.50      0.05      0.10        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.60      0.62      0.61      1371
+       Crime       0.00      0.00      0.00        35
+       Drama       0.69      0.79      0.74      2233
+      Family       0.00      0.00      0.00        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.55      0.75      0.63       406
+       Music       0.00      0.00      0.00         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.20      0.09      0.12        23
+     Romance       0.17      0.03      0.04        80
+      Sci-Fi       0.73      0.58      0.65        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.26      0.05      0.08       225
+         War       0.67      0.25      0.36         8
+     Western       0.80      0.74      0.77       128
+
+    accuracy                           0.64      4871
+   macro avg       0.31      0.22      0.24      4871
+weighted avg       0.60      0.64      0.61      4871
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.6389
+              precision    recall  f1-score   support
+
+      Action       0.51      0.43      0.47       134
+   Adventure       0.42      0.11      0.17        47
+   Animation       1.00      0.05      0.10        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.63      0.55      0.59      1371
+       Crime       0.10      0.06      0.07        35
+       Drama       0.65      0.86      0.74      2233
+      Family       0.00      0.00      0.00        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.67      0.67      0.67       406
+       Music       0.00      0.00      0.00         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.00      0.00      0.00        23
+     Romance       0.00      0.00      0.00        80
+      Sci-Fi       1.00      0.02      0.04        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.15      0.02      0.03       225
+         War       0.00      0.00      0.00         8
+     Western       0.77      0.73      0.75       128
+
+    accuracy                           0.64      4871
+   macro avg       0.29      0.17      0.18      4871
+weighted avg       0.59      0.64      0.60      4871
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.6407
+              precision    recall  f1-score   support
+
+      Action       0.56      0.24      0.34       134
+   Adventure       1.00      0.09      0.16        47
+   Animation       0.17      0.05      0.08        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.65      0.53      0.59      1371
+       Crime       0.05      0.03      0.04        35
+       Drama       0.65      0.86      0.74      2233
+      Family       0.31      0.08      0.12        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.60      0.71      0.65       406
+       Music       0.33      0.20      0.25         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.40      0.09      0.14        23
+     Romance       0.00      0.00      0.00        80
+      Sci-Fi       0.70      0.47      0.57        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.31      0.04      0.07       225
+         War       0.67      0.25      0.36         8
+     Western       0.78      0.73      0.76       128
+
+    accuracy                           0.64      4871
+   macro avg       0.36      0.22      0.24      4871
+weighted avg       0.61      0.64      0.60      4871
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.6387
+              precision    recall  f1-score   support
+
+      Action       0.40      0.47      0.43       134
+   Adventure       0.67      0.09      0.15        47
+   Animation       0.00      0.00      0.00        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.63      0.56      0.59      1371
+       Crime       0.00      0.00      0.00        35
+       Drama       0.65      0.85      0.74      2233
+      Family       0.00      0.00      0.00        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.68      0.65      0.67       406
+       Music       0.00      0.00      0.00         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.00      0.00      0.00        23
+     Romance       0.00      0.00      0.00        80
+      Sci-Fi       0.73      0.20      0.31        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.17      0.03      0.05       225
+         War       0.00      0.00      0.00         8
+     Western       0.70      0.76      0.73       128
+
+    accuracy                           0.64      4871
+   macro avg       0.23      0.18      0.18      4871
+weighted avg       0.59      0.64      0.60      4871
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.6393
+              precision    recall  f1-score   support
+
+      Action       0.56      0.39      0.46       134
+   Adventure       0.75      0.06      0.12        47
+   Animation       0.25      0.05      0.09        19
+   Biography       0.00      0.00      0.00        10
+      Comedy       0.64      0.58      0.61      1371
+       Crime       0.00      0.00      0.00        35
+       Drama       0.68      0.81      0.74      2233
+      Family       0.00      0.00      0.00        53
+     Fantasy       0.00      0.00      0.00        15
+     History       0.00      0.00      0.00         5
+      Horror       0.54      0.78      0.63       406
+       Music       0.17      0.20      0.18         5
+     Musical       0.00      0.00      0.00        16
+     Mystery       0.14      0.04      0.07        23
+     Romance       0.14      0.01      0.02        80
+      Sci-Fi       0.91      0.38      0.54        55
+       Sport       0.00      0.00      0.00         3
+    Thriller       0.29      0.09      0.14       225
+         War       1.00      0.25      0.40         8
+     Western       0.60      0.85      0.70       128
+
+    accuracy                           0.64      4871
+   macro avg       0.33      0.22      0.23      4871
+weighted avg       0.61      0.64      0.61      4871
+
+

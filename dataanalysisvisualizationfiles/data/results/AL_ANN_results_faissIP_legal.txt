@@ -1,0 +1,160 @@
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.4424
+               precision    recall  f1-score   support
+
+     affirmed       0.50      0.05      0.10        19
+      applied       0.15      0.07      0.10       488
+     approved       0.00      0.00      0.00        23
+        cited       0.55      0.82      0.66      2477
+   considered       0.09      0.01      0.02       321
+    discussed       0.14      0.01      0.01       198
+distinguished       0.50      0.02      0.04       106
+     followed       0.10      0.21      0.14       432
+  referred to       0.24      0.03      0.05       882
+      related       1.00      0.06      0.12        16
+
+     accuracy                           0.44      4962
+    macro avg       0.33      0.13      0.12      4962
+ weighted avg       0.37      0.44      0.36      4962
+
+
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.4913
+               precision    recall  f1-score   support
+
+     affirmed       1.00      0.05      0.10        19
+      applied       0.11      0.00      0.00       488
+     approved       0.00      0.00      0.00        23
+        cited       0.51      0.97      0.67      2477
+   considered       0.17      0.02      0.04       321
+    discussed       0.11      0.06      0.07       198
+distinguished       0.00      0.00      0.00       106
+     followed       0.13      0.04      0.06       432
+  referred to       0.19      0.01      0.01       882
+      related       0.00      0.00      0.00        16
+
+     accuracy                           0.49      4962
+    macro avg       0.22      0.11      0.10      4962
+ weighted avg       0.33      0.49      0.35      4962
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.4849
+               precision    recall  f1-score   support
+
+     affirmed       0.50      0.05      0.10        19
+      applied       0.17      0.08      0.11       488
+     approved       0.00      0.00      0.00        23
+        cited       0.52      0.94      0.67      2477
+   considered       0.15      0.06      0.08       321
+    discussed       0.00      0.00      0.00       198
+distinguished       0.20      0.01      0.02       106
+     followed       0.17      0.02      0.03       432
+  referred to       0.19      0.02      0.04       882
+      related       0.00      0.00      0.00        16
+
+     accuracy                           0.48      4962
+    macro avg       0.19      0.12      0.10      4962
+ weighted avg       0.34      0.48      0.36      4962
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.4879
+               precision    recall  f1-score   support
+
+     affirmed       0.50      0.21      0.30        19
+      applied       0.19      0.14      0.16       488
+     approved       0.00      0.00      0.00        23
+        cited       0.53      0.93      0.67      2477
+   considered       0.00      0.00      0.00       321
+    discussed       0.24      0.06      0.10       198
+distinguished       0.50      0.02      0.04       106
+     followed       0.71      0.01      0.02       432
+  referred to       0.27      0.03      0.05       882
+      related       0.04      0.12      0.07        16
+
+     accuracy                           0.49      4962
+    macro avg       0.30      0.15      0.14      4962
+ weighted avg       0.41      0.49      0.37      4962
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.4573
+               precision    recall  f1-score   support
+
+     affirmed       0.00      0.00      0.00        19
+      applied       0.19      0.05      0.08       488
+     approved       0.00      0.00      0.00        23
+        cited       0.54      0.85      0.66      2477
+   considered       0.28      0.02      0.04       321
+    discussed       0.12      0.11      0.12       198
+distinguished       0.14      0.09      0.11       106
+     followed       0.11      0.12      0.12       432
+  referred to       0.32      0.06      0.10       882
+      related       0.25      0.12      0.17        16
+
+     accuracy                           0.46      4962
+    macro avg       0.19      0.14      0.14      4962
+ weighted avg       0.38      0.46      0.38      4962
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.4857
+               precision    recall  f1-score   support
+
+     affirmed       0.83      0.26      0.40        19
+      applied       0.17      0.02      0.04       488
+     approved       0.00      0.00      0.00        23
+        cited       0.53      0.92      0.67      2477
+   considered       0.15      0.06      0.08       321
+    discussed       0.16      0.08      0.11       198
+distinguished       0.23      0.03      0.05       106
+     followed       0.13      0.06      0.09       432
+  referred to       0.33      0.05      0.08       882
+      related       0.11      0.06      0.08        16
+
+     accuracy                           0.49      4962
+    macro avg       0.27      0.15      0.16      4962
+ weighted avg       0.38      0.49      0.37      4962
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.4710
+               precision    recall  f1-score   support
+
+     affirmed       0.50      0.05      0.10        19
+      applied       0.15      0.01      0.01       488
+     approved       0.00      0.00      0.00        23
+        cited       0.53      0.89      0.66      2477
+   considered       0.57      0.01      0.02       321
+    discussed       0.10      0.19      0.13       198
+distinguished       0.50      0.02      0.04       106
+     followed       0.11      0.04      0.06       432
+  referred to       0.27      0.07      0.11       882
+      related       1.00      0.06      0.12        16
+
+     accuracy                           0.47      4962
+    macro avg       0.37      0.13      0.12      4962
+ weighted avg       0.39      0.47      0.37      4962
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.4788
+               precision    recall  f1-score   support
+
+     affirmed       0.47      0.47      0.47        19
+      applied       0.19      0.06      0.09       488
+     approved       0.05      0.04      0.05        23
+        cited       0.53      0.90      0.67      2477
+   considered       0.18      0.04      0.06       321
+    discussed       0.16      0.10      0.12       198
+distinguished       0.09      0.15      0.11       106
+     followed       0.22      0.04      0.07       432
+  referred to       0.26      0.04      0.07       882
+      related       0.00      0.00      0.00        16
+
+     accuracy                           0.48      4962
+    macro avg       0.22      0.19      0.17      4962
+ weighted avg       0.37      0.48      0.38      4962
+
+

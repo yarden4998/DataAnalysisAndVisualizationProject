@@ -1,0 +1,104 @@
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.9630
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.98      0.99      0.98      3747
+   ['cs.LG']       0.88      0.84      0.86       565
+ ['stat.ML']       0.85      0.48      0.61        61
+
+    accuracy                           0.96      4373
+   macro avg       0.90      0.77      0.82      4373
+weighted avg       0.96      0.96      0.96      4373
+
+
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.9657
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.98      0.99      0.98      3747
+   ['cs.LG']       0.88      0.86      0.87       565
+ ['stat.ML']       0.83      0.39      0.53        61
+
+    accuracy                           0.97      4373
+   macro avg       0.90      0.75      0.80      4373
+weighted avg       0.96      0.97      0.96      4373
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.9616
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.97      0.99      0.98      3747
+   ['cs.LG']       0.88      0.83      0.85       565
+ ['stat.ML']       0.86      0.39      0.54        61
+
+    accuracy                           0.96      4373
+   macro avg       0.90      0.74      0.79      4373
+weighted avg       0.96      0.96      0.96      4373
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.9618
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.98      0.99      0.98      3747
+   ['cs.LG']       0.87      0.84      0.86       565
+ ['stat.ML']       0.78      0.41      0.54        61
+
+    accuracy                           0.96      4373
+   macro avg       0.88      0.75      0.79      4373
+weighted avg       0.96      0.96      0.96      4373
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.9634
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.98      0.99      0.98      3747
+   ['cs.LG']       0.88      0.84      0.86       565
+ ['stat.ML']       0.76      0.48      0.59        61
+
+    accuracy                           0.96      4373
+   macro avg       0.87      0.77      0.81      4373
+weighted avg       0.96      0.96      0.96      4373
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.9625
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.99      0.98      0.98      3747
+   ['cs.LG']       0.82      0.92      0.87       565
+ ['stat.ML']       0.81      0.34      0.48        61
+
+    accuracy                           0.96      4373
+   macro avg       0.87      0.75      0.78      4373
+weighted avg       0.96      0.96      0.96      4373
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.9634
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.98      0.99      0.98      3747
+   ['cs.LG']       0.89      0.84      0.86       565
+ ['stat.ML']       0.84      0.44      0.58        61
+
+    accuracy                           0.96      4373
+   macro avg       0.90      0.76      0.81      4373
+weighted avg       0.96      0.96      0.96      4373
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.9604
+              precision    recall  f1-score   support
+
+   ['cs.CV']       0.97      0.99      0.98      3747
+   ['cs.LG']       0.88      0.83      0.85       565
+ ['stat.ML']       0.78      0.34      0.48        61
+
+    accuracy                           0.96      4373
+   macro avg       0.88      0.72      0.77      4373
+weighted avg       0.96      0.96      0.96      4373
+
+

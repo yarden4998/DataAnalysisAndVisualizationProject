@@ -82,6 +82,7 @@ DataAnalysisAndVisualizationProject/
 │   │   ├── legal_text_classification.csv # Legal text classification dataset
 │   │   ├── images/ # Directory of images for the final report
 │   │   ├── pickle_files/ # Directory for saving pickle files
+│   │   ├── results/ # Directory for storing results of AL ANN running on different settings
 │   ├── research/ # Directory for research-related files
 │   │   ├── code/ # Directory for research-related code
 │   │   │   ├── explore_datasets.ipynb # Jupyter notebook for exploring datasets
