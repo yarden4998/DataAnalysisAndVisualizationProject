@@ -1,4 +1,4 @@
-# Data Analysis and Visualization Final Project
+# Addressing Class Imbalance in Active Learning via Approximate Nearest Neighbour Methods 
 
 ## Project Overview
 
@@ -24,9 +24,6 @@ Follow these steps to set up the environment and run the code:
     poetry install --no-root
     ```
 This will install all necessary dependencies for the project. Make sure to use the virtual environment created by Poetry.
-
-
-# Change from here!!!
 
 ## Running the Code
 <!-- 
@@ -93,3 +90,10 @@ DataAnalysisAndVisualizationProject/
 │   │   │   ├── IMDb movies.csv # IMDb movies dataset
 │   │   │   ├── Skin cancer ISIC/ # Skin cancer dataset
 ```
+
+## Conclusions
+
+<!-- here is how to put here an image: ![image]('/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/images/academic_papers_accuracy_active_learning.png')
+
+here is how to put here a link to anything (can add link to internet or to somewhere in the proj) : [name to appear for link]('/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/images/academic_papers_accuracy_active_learning.png') -->
+
