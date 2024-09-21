@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import re
 from nltk.corpus import stopwords
@@ -65,20 +66,21 @@ def preprocess_data(dataset_name: str = 'imdb') -> pd.DataFrame:
     return dataset
 
 def get_path(dataset: str):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     # Gets path to dataset given its name
     if dataset == 'imdb':
-        return '/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/IMDb movies.csv'
+        return os.path.abspath(os.path.join(script_dir, '../data/IMDb movies.csv'))
     elif dataset == 'academic_papers':
-        return '/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/arxiv_data_210930-054931.csv'
+        return os.path.abspath(os.path.join(script_dir, '../data/arxiv_data_210930-054931.csv'))
     elif dataset == 'legal':
-        return '/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/legal_text_classification.csv'
+        return os.path.abspath(os.path.join(script_dir, '../data/legal_text_classification.csv'))
     elif dataset == 'reviews':
-        return '/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/product_reviews_40k.csv'            
+        return os.path.abspath(os.path.join(script_dir, '../data/product_reviews_40k.csv'))
     elif dataset == 'ecommerce':
-        return '/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/ecommerceDataset.csv'
+        return os.path.abspath(os.path.join(script_dir, '../data/ecommerceDataset.csv'))
     else:
         raise ValueError('Invalid dataset name')
-    
+
 def get_text_target_columns(dataset: str):
     # Gets column names in to dataset given dataset name
     if dataset == 'imdb':
@@ -93,5 +95,3 @@ def get_text_target_columns(dataset: str):
         return 'description', 'category'
     else:
         raise ValueError('Invalid dataset name')
-
-

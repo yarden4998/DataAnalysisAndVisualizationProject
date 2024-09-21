@@ -3,7 +3,20 @@ from annoy import AnnoyIndex
 import numpy as np
 
 class ANN:
+    """
+    Approximate Nearest Neighbor (ANN) class using FAISS for various metrics.
+    """
+
     def __init__(self, dimension, metric='L2', use_gpu=False, num_threads=2):
+        """
+        Initialize the ANN index.
+
+        Parameters:
+        - dimension (int): The dimensionality of the vectors.
+        - metric (str): The distance metric to use. Supported metrics are: 'L2', 'InnerProduct', 'Cosine', 'LSH', 'HNSW', 'IVF_l2', 'IVF_ip'.
+        - use_gpu (bool): Whether to use GPU for computations.
+        - num_threads (int): Number of threads to use for CPU computations.
+        """
         self.dimension = dimension
         self.metric = metric
         if metric == 'L2':
@@ -30,6 +43,12 @@ class ANN:
             faiss.omp_set_num_threads(num_threads)
 
     def add_embeddings(self, embeddings):
+        """
+        Add embeddings to the index.
+
+        Parameters:
+        - embeddings (np.ndarray): The embeddings to add.
+        """
         if self.metric == 'Cosine' or self.metric == 'IVF_ip':
             embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
         if self.metric == 'IVF_l2' or self.metric == 'IVF_ip':
@@ -37,6 +56,16 @@ class ANN:
         self.index.add(embeddings)
     
     def compute_distance_matrix(self, embeddings):
+        """
+        Compute the distance matrix for the given embeddings.
+
+        Parameters:
+        - embeddings (np.ndarray): The embeddings to compute the distance matrix for.
+
+        Returns:
+        - distance_matrix (np.ndarray): The upper triangular distance matrix.
+        - index_matrix (np.ndarray): The upper triangular index matrix.
+        """
         if self.metric == 'Cosine' or self.metric == 'IVF_ip':
             embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
 
@@ -51,25 +80,63 @@ class ANN:
         return np.triu(distance_matrix), np.triu(index_matrix)
     
     def search(self, query, k):
+        """
+        Search for the k nearest neighbors of the query.
+
+        Parameters:
+        - query (np.ndarray): The query vector.
+        - k (int): The number of nearest neighbors to search for.
+
+        Returns:
+        - D (np.ndarray): The distances to the nearest neighbors.
+        - I (np.ndarray): The indices of the nearest neighbors.
+        """
         if self.metric == 'Cosine' or self.metric == 'IVF_ip':
             query = query / np.linalg.norm(query)
         D, I = self.index.search(query, k)
         return D, I
 
 class ANNOY:
+    """
+    Approximate Nearest Neighbor (ANN) class using Annoy for various metrics.
+    """
 
     def __init__(self, dimension, metric='angular', n_trees=10):
+        """
+        Initialize the ANNOY index.
+
+        Parameters:
+        - dimension (int): The dimensionality of the vectors.
+        - metric (str): The distance metric to use. Supported metrics are: 'angular', 'euclidean', 'manhattan', 'hamming', 'dot'.
+        - n_trees (int): The number of trees to use in the index.
+        """
         self.dimension = dimension
         self.metric = metric
         self.index = AnnoyIndex(dimension, metric)
         self.n_trees = n_trees
     
     def add_embeddings(self, embeddings):
+        """
+        Add embeddings to the index.
+
+        Parameters:
+        - embeddings (np.ndarray): The embeddings to add.
+        """
         for i, embedding in enumerate(embeddings):
             self.index.add_item(i, embedding)
         self.index.build(self.n_trees)
     
     def compute_distance_matrix(self, embeddings):
+        """
+        Compute the distance matrix for the given embeddings.
+
+        Parameters:
+        - embeddings (np.ndarray): The embeddings to compute the distance matrix for.
+
+        Returns:
+        - distance_matrix (np.ndarray): The upper triangular distance matrix.
+        - index_matrix (np.ndarray): The upper triangular index matrix.
+        """
         n = len(embeddings)
         distance_matrix = np.zeros((n, n))
         index_matrix = np.zeros((n, n), dtype=int)
@@ -82,6 +149,17 @@ class ANNOY:
         return np.triu(distance_matrix), np.triu(index_matrix)
 
     def search(self, query_vectors, k):
+        """
+        Search for the k nearest neighbors of the query vectors.
+
+        Parameters:
+        - query_vectors (np.ndarray): The query vectors.
+        - k (int): The number of nearest neighbors to search for.
+
+        Returns:
+        - distances (list): The distances to the nearest neighbors.
+        - indices (list): The indices of the nearest neighbors.
+        """
         indices = [self.index.get_nns_by_vector(vector, k) for vector in query_vectors]
         distances = [[] for _ in range(len(query_vectors))]
         return distances, indices

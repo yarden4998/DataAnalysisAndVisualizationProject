@@ -1,3 +1,5 @@
+import os
+import sys
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -5,7 +7,6 @@ from sklearn.metrics import accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
-from preprocess_data import preprocess_data
 from scipy.spatial.distance import pdist, squareform
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -13,6 +14,13 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 import faiss
+
+# Add the directory containing preprocess_data.py to the Python path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+module_path = os.path.abspath(os.path.join(script_dir, '..'))
+sys.path.append(module_path)
+
+from preprocess_data import preprocess_data
 
 # Load your data
 data = preprocess_data()

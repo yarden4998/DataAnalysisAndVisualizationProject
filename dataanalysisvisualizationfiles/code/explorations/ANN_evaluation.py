@@ -1,15 +1,23 @@
+import os
+import sys
 import faiss
 import numpy as np
 import pandas as pd
 import pickle
 from sentence_transformers import SentenceTransformer
-from preprocess_data import preprocess_data
 from ANNs import ANN, ANNOY
 from time import time
 from sklearn.metrics import pairwise_distances_argmin_min
 from annoy import AnnoyIndex
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
+
+# Add the directory containing preprocess_data.py to the Python path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+module_path = os.path.abspath(os.path.join(script_dir, '..'))
+sys.path.append(module_path)
+
+from preprocess_data import preprocess_data
 
 def load_data():
     df = preprocess_data()
