@@ -1,0 +1,112 @@
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.9444
+                        precision    recall  f1-score   support
+
+                 Books       0.96      0.94      0.95      2399
+Clothing & Accessories       0.95      0.96      0.96      1730
+           Electronics       0.92      0.94      0.93      2116
+             Household       0.94      0.94      0.94      3840
+
+              accuracy                           0.94     10085
+             macro avg       0.94      0.95      0.94     10085
+          weighted avg       0.94      0.94      0.94     10085
+
+
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.9496
+                        precision    recall  f1-score   support
+
+                 Books       0.96      0.94      0.95      2399
+Clothing & Accessories       0.95      0.97      0.96      1730
+           Electronics       0.95      0.93      0.94      2116
+             Household       0.94      0.95      0.95      3840
+
+              accuracy                           0.95     10085
+             macro avg       0.95      0.95      0.95     10085
+          weighted avg       0.95      0.95      0.95     10085
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.9458
+                        precision    recall  f1-score   support
+
+                 Books       0.95      0.95      0.95      2399
+Clothing & Accessories       0.95      0.97      0.96      1730
+           Electronics       0.94      0.93      0.94      2116
+             Household       0.94      0.94      0.94      3840
+
+              accuracy                           0.95     10085
+             macro avg       0.95      0.95      0.95     10085
+          weighted avg       0.95      0.95      0.95     10085
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.9490
+                        precision    recall  f1-score   support
+
+                 Books       0.97      0.94      0.95      2399
+Clothing & Accessories       0.94      0.97      0.96      1730
+           Electronics       0.94      0.93      0.94      2116
+             Household       0.94      0.95      0.95      3840
+
+              accuracy                           0.95     10085
+             macro avg       0.95      0.95      0.95     10085
+          weighted avg       0.95      0.95      0.95     10085
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.9449
+                        precision    recall  f1-score   support
+
+                 Books       0.95      0.94      0.95      2399
+Clothing & Accessories       0.96      0.96      0.96      1730
+           Electronics       0.93      0.94      0.93      2116
+             Household       0.95      0.94      0.94      3840
+
+              accuracy                           0.94     10085
+             macro avg       0.94      0.95      0.95     10085
+          weighted avg       0.94      0.94      0.94     10085
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.9516
+                        precision    recall  f1-score   support
+
+                 Books       0.97      0.94      0.95      2399
+Clothing & Accessories       0.95      0.97      0.96      1730
+           Electronics       0.94      0.93      0.94      2116
+             Household       0.95      0.96      0.95      3840
+
+              accuracy                           0.95     10085
+             macro avg       0.95      0.95      0.95     10085
+          weighted avg       0.95      0.95      0.95     10085
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.9455
+                        precision    recall  f1-score   support
+
+                 Books       0.95      0.95      0.95      2399
+Clothing & Accessories       0.95      0.96      0.96      1730
+           Electronics       0.94      0.93      0.93      2116
+             Household       0.94      0.95      0.94      3840
+
+              accuracy                           0.95     10085
+             macro avg       0.95      0.95      0.95     10085
+          weighted avg       0.95      0.95      0.95     10085
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.9482
+                        precision    recall  f1-score   support
+
+                 Books       0.97      0.94      0.95      2399
+Clothing & Accessories       0.96      0.96      0.96      1730
+           Electronics       0.96      0.91      0.94      2116
+             Household       0.93      0.97      0.95      3840
+
+              accuracy                           0.95     10085
+             macro avg       0.95      0.95      0.95     10085
+          weighted avg       0.95      0.95      0.95     10085
+
+

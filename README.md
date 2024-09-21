@@ -2,11 +2,18 @@
 
 ## Project Overview
 
-This project focuses on addressing class imbalance in Active Learning pipelines using Approximate Nearest Neighbor (ANN) methods. The research investigates wether ANN can improve the efficiency and accuracy of Active Learning models when dealing with imbalanced, high-dimensional datasets.
+This project focuses on addressing class imbalance in Active Learning pipelines using Approximate Nearest Neighbor (ANN) methods. The research investigates whether ANN can improve the efficiency and accuracy of Active Learning models when dealing with imbalanced, high-dimensional datasets.
 
 The proposed approach includes exploring different indexing and sampling strategies, such as distance-based and cluster-based methods, to optimize data selection in active learning pipelines.
 
 ## Setup Instructions
+
+### Prerequisites
+
+* Python 3.10
+* Poetry
+
+### Environment Setup
 
 Follow these steps to set up the environment and run the code:
 
@@ -15,41 +22,41 @@ Follow these steps to set up the environment and run the code:
     ```bash
     pip install poetry
     ```
-2. **Clone this repo** 
+2. **Select Poetry Base Interpreter** 
     ```bash
-    git clone <repository_url>
+    poetry env use <path to your executable python 3.10>
     ```
-3. **Run from main root**
+3. **Check Poetry Base Interpreter** 
+    Run the following command and check that the base interpreter is Python 3.10:
+    ```bash
+    poetry env info
+    ```
+4. **Clone This Repo** 
+    ```bash
+    git clone https://github.com/yarden4998/DataAnalysisAndVisualizationProject.git
+    ```
+5. **Run from Main Root**
+    Navigate to the directory where the `pyproject.toml` file is located and run:
     ```bash
     poetry install --no-root
     ```
+6. **Select Your Virtual Environment**
+    Your virtual environment is now located at:
+    ```
+    .cache/pypoetry/virtualenvs
+    ```
+
 This will install all necessary dependencies for the project. Make sure to use the virtual environment created by Poetry.
 
 ## Running the Code
-<!-- 
-1. **Preprocess the Data** \
-Run the preprocessing script to clean the dataset, remove unnecessary values, and embed the text using a transformer-based model:
 
-bash
-poetry run python scripts/preprocessing.py
+Please go to the [graphing & combinations pipeline notebook](dataanalysisvisualizationfiles/code/graphing%20%26%20combinations%20pipeline.ipynb) and select the desired configuration to run:
+1. In cell number 2, please select the dataset.
+2. In cell number 4, please select the methods.
+3. Select the Poetry virtual environment.
+4. Run the notebook.
 
-2. Run the Active Learning Pipeline
-To run the Active Learning process, use the following command. This will perform sampling and model training based on the ANN methods discussed in the project.
-
-bash
-poetry run python scripts/active_learning_pipeline.py
-
-3. Run Experiments and Generate Results
-To run the ANN experiments and gather results such as recall@k and runtime, execute the experiment script:
-
-bash
-poetry run python scripts/experiments.py
-
-4. Visualize the Results
-Finally, to visualize the results of the experiments (e.g., using tables, plots), run:
-
-bash
-poetry run python scripts/visualization.py -->
+To run any other code file, please use the created virtual environment.
 
 ## Project Structure
 
@@ -92,7 +99,7 @@ DataAnalysisAndVisualizationProject/
 │   │   │   ├── Skin cancer ISIC/ # Skin cancer dataset
 ```
 
-## Conclusions
+<!-- ## Conclusions -->
 
 <!-- here is how to put here an image: ![image]('/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/images/academic_papers_accuracy_active_learning.png')
 

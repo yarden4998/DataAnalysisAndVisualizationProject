@@ -1,0 +1,128 @@
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.8444
+                      precision    recall  f1-score   support
+
+       baby products       0.82      0.80      0.81      1116
+              beauty       0.84      0.78      0.81      1181
+grocery gourmet food       0.82      0.85      0.84       709
+health personal care       0.78      0.80      0.79      1905
+        pet supplies       0.90      0.90      0.90       950
+          toys games       0.89      0.92      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.84      0.84      0.84      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
+use_faiss_clustering=True, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.8384
+                      precision    recall  f1-score   support
+
+       baby products       0.78      0.83      0.81      1116
+              beauty       0.83      0.80      0.82      1181
+grocery gourmet food       0.87      0.74      0.80       709
+health personal care       0.77      0.81      0.79      1905
+        pet supplies       0.90      0.90      0.90       950
+          toys games       0.90      0.89      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.84      0.83      0.83      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.8406
+                      precision    recall  f1-score   support
+
+       baby products       0.86      0.77      0.81      1116
+              beauty       0.81      0.82      0.81      1181
+grocery gourmet food       0.85      0.83      0.84       709
+health personal care       0.79      0.78      0.78      1905
+        pet supplies       0.89      0.89      0.89       950
+          toys games       0.87      0.93      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.84      0.84      0.84      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
+use_faiss_clustering=True, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.8451
+                      precision    recall  f1-score   support
+
+       baby products       0.83      0.81      0.82      1116
+              beauty       0.86      0.78      0.82      1181
+grocery gourmet food       0.87      0.79      0.83       709
+health personal care       0.78      0.81      0.79      1905
+        pet supplies       0.89      0.91      0.90       950
+          toys games       0.88      0.92      0.90      2139
+
+            accuracy                           0.85      8000
+           macro avg       0.85      0.84      0.84      8000
+        weighted avg       0.85      0.85      0.84      8000
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=True
+Final Accuracy: 0.8391
+                      precision    recall  f1-score   support
+
+       baby products       0.87      0.76      0.81      1116
+              beauty       0.79      0.81      0.80      1181
+grocery gourmet food       0.82      0.85      0.84       709
+health personal care       0.79      0.78      0.78      1905
+        pet supplies       0.87      0.90      0.89       950
+          toys games       0.89      0.91      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.84      0.84      0.84      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
+use_faiss_clustering=False, ensure_genre_coverage=True, use_ann_selection=False
+Final Accuracy: 0.8407
+                      precision    recall  f1-score   support
+
+       baby products       0.90      0.73      0.81      1116
+              beauty       0.80      0.82      0.81      1181
+grocery gourmet food       0.83      0.81      0.82       709
+health personal care       0.77      0.81      0.79      1905
+        pet supplies       0.92      0.89      0.90       950
+          toys games       0.87      0.93      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.85      0.83      0.84      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=True
+Final Accuracy: 0.8436
+                      precision    recall  f1-score   support
+
+       baby products       0.84      0.79      0.82      1116
+              beauty       0.81      0.80      0.81      1181
+grocery gourmet food       0.82      0.85      0.84       709
+health personal care       0.78      0.81      0.79      1905
+        pet supplies       0.91      0.88      0.89       950
+          toys games       0.90      0.91      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.84      0.84      0.84      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
+use_faiss_clustering=False, ensure_genre_coverage=False, use_ann_selection=False
+Final Accuracy: 0.8404
+                      precision    recall  f1-score   support
+
+       baby products       0.82      0.81      0.81      1116
+              beauty       0.82      0.82      0.82      1181
+grocery gourmet food       0.81      0.83      0.82       709
+health personal care       0.80      0.77      0.79      1905
+        pet supplies       0.87      0.91      0.89       950
+          toys games       0.90      0.90      0.90      2139
+
+            accuracy                           0.84      8000
+           macro avg       0.84      0.84      0.84      8000
+        weighted avg       0.84      0.84      0.84      8000
+
+
