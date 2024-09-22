@@ -65,6 +65,7 @@ Below is an outline of the project files and directories:
 ```bash
 DataAnalysisAndVisualizationProject/
 ├── pyproject.toml # Poetry configuration file for dependencies
+├── AL_with_ANN_Project_Report.pdf # A full report of the project
 ├── README.md # This README file
 ├── poetry.lock # Poetry lock file for dependencies
 ├── dataanalysisvisualizationfiles/ # Main project directory
@@ -99,9 +100,10 @@ DataAnalysisAndVisualizationProject/
 │   │   │   ├── Skin cancer ISIC/ # Skin cancer dataset
 ```
 
-<!-- ## Conclusions -->
+## Results and Conclustions 
+The study found that while distance-based sampling was less effective than clustering, both methods slightly outperformed random sampling. However, margin sampling consistently outperformed all other methods, demonstrating the strength of uncertainty-based approaches in active learning. The LSH index also showed promise within the active learning pipeline, despite its suboptimal recall in standalone evaluations, as it provided a more diverse sample neighborhood, which aided learning in imbalanced datasets.
 
-<!-- here is how to put here an image: ![image]('/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/images/academic_papers_accuracy_active_learning.png')
+Key limitations included the IMDb dataset’s severe class imbalance and lack of specificity, which hindered the clustering algorithm’s effectiveness. Additionally, the use of general-purpose embeddings may have missed deeper semantic relationships, and computational constraints limited the evaluation to smaller datasets and lower-dimensional embeddings.
 
-here is how to put here a link to anything (can add link to internet or to somewhere in the proj) : [name to appear for link]('/home/student/idan/DataAnalysisAndVisualizationProject/dataanalysisvisualizationfiles/data/images/academic_papers_accuracy_active_learning.png') -->
+Future work should explore higher-dimensional embeddings, larger datasets, and advanced sampling techniques to enhance performance and scalability in more complex settings.
 
